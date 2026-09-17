@@ -1,0 +1,1 @@
+export { consolePanel } from './console';
