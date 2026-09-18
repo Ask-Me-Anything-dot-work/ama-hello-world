@@ -56,6 +56,15 @@ jobs:
       - name: Build
         run: bun run build
 
+      - name: Verify package identity
+        run: |
+          NAME=$(bun -e "console.log(require('./package.json').name)")
+          if [ "$NAME" != "@ama-work/ama-hello-world" ]; then
+            echo "ERROR: package.json name is '$NAME', expected '@ama-work/ama-hello-world'"
+            exit 1
+          fi
+          echo "Package identity verified: $NAME"
+
       - name: Release
         run: bun run release
         env:

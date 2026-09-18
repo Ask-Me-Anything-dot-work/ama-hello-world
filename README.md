@@ -1,4 +1,4 @@
-# ama-hello-world
+# @ama-work/ama-hello-world
 
 Minimal end-to-end test plugin for the ama-mesh Orchestrator plugin system. See issue #1 for the full goal and acceptance criteria.
 
