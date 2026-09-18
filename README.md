@@ -35,6 +35,15 @@ tests/
 └── plugin.test.ts    # MockBridge-based tests
 ```
 
+## Plugin Entrypoint
+
+The `package.json` declares the runtime entrypoint that the Orchestrator uses to load this plugin:
+
+- `main`: `dist/index.js` — the compiled entrypoint
+- `types`: `dist/index.d.ts` — TypeScript declarations
+
+The Orchestrator resolves plugins by reading the `main` field from the installed package's `package.json`. This is the interface contract: every published Orchestrator plugin **must** declare `main` pointing to the compiled output.
+
 ## CI/CD
 
 - **CI**: GitHub Actions runs lint, typecheck, and tests on push/PR to `main`.
