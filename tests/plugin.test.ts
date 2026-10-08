@@ -1,14 +1,19 @@
 import { expect, test, describe } from 'bun:test';
 import { MockBridge } from '@ama-work/plugin-contract';
 import type { Hono } from 'hono';
-import plugin, { consolePanel } from '../src/index.js';
+import * as mod from '../src/index.js';
 import { createPluginRouter } from '../src/plugin.route.js';
+
+const plugin = mod.plugin;
+const consolePanel = mod.consolePanel;
 
 describe('Plugin', () => {
   test('satisfies orchestrator export contract', () => {
-    expect(typeof plugin.id).toBe('string');
-    expect(typeof plugin.onStart).toBe('function');
-    expect(typeof plugin.onStop).toBe('function');
+    expect(mod.plugin).toBeDefined();
+    expect(typeof mod.plugin.id).toBe('string');
+    expect(typeof mod.plugin.onStart).toBe('function');
+    expect(typeof mod.plugin.onStop).toBe('function');
+    expect(mod.default).toBe(mod.plugin);
   });
 
   test('has correct id', () => {
