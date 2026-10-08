@@ -1,6 +1,6 @@
 {
   "name": "@ama-work/ama-hello-world",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -17,7 +17,8 @@
     "publish:verdaccio": "npm publish --registry http://verdaccio.homelab"
   },
   "dependencies": {
-    "@ama-work/plugin-contract": "^1.0.1"
+    "@ama-work/plugin-contract": "^1.0.1",
+    "hono": "^4.8.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^21.2.0",

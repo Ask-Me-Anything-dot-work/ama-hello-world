@@ -5,5 +5,5 @@ export const consolePanel: ConsolePanel = {
   navLabel: 'ama-hello-world',
   icon: 'settings',
   mixinUrl: '',
-  templateUrl: './hello-world.html',
+  templateUrl: '/plugins/@ama-work/ama-hello-world/hello-world.html',
 };

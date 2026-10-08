@@ -6,6 +6,7 @@
       "name": "ama-hello-world",
       "dependencies": {
         "@ama-work/plugin-contract": "^1.0.1",
+        "hono": "^4.8.0",
       },
       "devDependencies": {
         "@commitlint/cli": "^21.2.0",

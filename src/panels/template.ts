@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+export const helloWorldHtml = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -13,3 +13,4 @@
   <h1>hello world</h1>
 </body>
 </html>
+`;

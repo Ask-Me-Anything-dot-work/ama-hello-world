@@ -1,1 +1,1 @@
-export { consolePanel } from './console';
+export { consolePanel } from './console.js';

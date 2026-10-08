@@ -17,9 +17,10 @@ This is a plugin scaffold for the Orchestrator. It provides a baseline Bun/TS pr
 
 ## 3. Project Structure
 The repository follows a clean, predictable layout:
-- `src/index.ts`: Entry point, OrchestratorPlugin definition, and panel exports.
-- `src/panels/console.ts`: ConsolePanel definition.
-- `src/panels/hello-world.html`: Panel template rendering "hello world".
+- `src/index.ts`: Entry point, named `plugin` export (OrchestratorPlugin), and panel exports.
+- `src/plugin.route.ts`: Hono router serving plugin assets under `/plugins/@ama-work/ama-hello-world/`.
+- `src/panels/console.ts`: ConsolePanel definition with absolute `templateUrl`.
+- `src/panels/template.ts`: Panel template ("hello world") embedded as a TS string (tsc does not copy `.html` to `dist/`).
 - `tests/plugin.test.ts`: MockBridge-based tests for the plugin.
 
 ## 4. Standard Workflows

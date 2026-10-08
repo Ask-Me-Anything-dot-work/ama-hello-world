@@ -25,12 +25,13 @@ bun run dev
 
 ```
 src/
-├── index.ts          # Plugin entry point (OrchestratorPlugin)
+├── index.ts          # Plugin entry point (named `plugin` export)
+├── plugin.route.ts   # Hono router serving plugin assets
 ├── config/env.ts     # Zod-validated env config
 ├── panels/
-│   ├── console.ts    # ConsolePanel definition
+│   ├── console.ts    # ConsolePanel definition (absolute templateUrl)
 │   ├── index.ts      # Panel exports
-│   └── hello-world.html  # Hello world panel template
+│   └── template.ts   # Hello world panel template (embedded HTML)
 tests/
 └── plugin.test.ts    # MockBridge-based tests
 ```
