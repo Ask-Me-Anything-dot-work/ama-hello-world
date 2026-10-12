@@ -48,4 +48,4 @@ The Orchestrator resolves plugins by reading the `main` field from the installed
 ## CI/CD
 
 - **CI**: GitHub Actions runs lint, typecheck, and tests on push/PR to `main`.
-- **Release**: semantic-release on `main` push. Publishes to Verdaccio.
+- **Release**: semantic-release on `main` push → publishes to **npmjs** (`NPM_TOKEN` secret in Actions). Verdaccio resolves this package via its npmjs uplink proxy — it is never published to directly. Requires a conventional squash-commit subject (`fix: ...` / `feat: ...`), otherwise semantic-release skips the release. See `AGENTS.md` §8.

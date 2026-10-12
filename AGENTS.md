@@ -54,3 +54,18 @@ This project is designed to be used with global Model Context Protocol (MCP) ser
 ## 7. When Changing Protocols
 - If a change affects public behavior (e.g., modifying routes, environment variable contracts, or response shapes), you MUST update `AGENTS.md` in the same Pull Request to reflect these changes.
 - Always add or adjust tests that correspond to the documented behavior changes.
+
+## 8. Release & Publishing (Canonical)
+There is exactly ONE publish path: **semantic-release inside GitHub Actions on push to `main`, publishing to npmjs**. Verdaccio serves this package through its npmjs uplink proxy.
+
+Rules for agents and maintainers:
+
+1. **Never publish manually.** No `npm publish`, no `publish:verdaccio`, no Verdaccio credentials. There is no `VERDACCIO_PUBLISH_TOKEN` requirement — the premise of issue #14 was wrong. `publishConfig.registry = "https://registry.npmjs.org"` in `package.json` is intentional.
+2. **PR titles decide releases.** This repo squash-merges, and semantic-release parses the **squash commit subject on `main`**. It must be conventional: `fix: ...`, `feat: ...` (type + colon). A subject without `type:` makes semantic-release skip — no release commit, no tag, no publish. This is exactly how `1.0.4` was never cut: PR #13's subject was `Fix export shape + mount console panel + plugin asset routes (#12) (#13)`.
+3. **Never bump `version` in `package.json` manually.** semantic-release owns it and writes it in the `chore(release): x.y.z [skip ci]` commit.
+4. **Verify after a release:**
+   ```bash
+   curl -s http://verdaccio.homelab/@ama-work/ama-hello-world/latest | jq '{version, main}'
+   # expect new version, main: "dist/index.js"
+   ```
+5. The `publish:npm` and `publish:verdaccio` scripts are legacy traps — npm ≥ 9 applies `publishConfig.registry` over the `--registry` CLI flag, so `publish:verdaccio` would target npmjs anyway (or fail auth). Do not use them; remove them in a follow-up.
