@@ -68,4 +68,4 @@ Rules for agents and maintainers:
    curl -s http://verdaccio.homelab/@ama-work/ama-hello-world/latest | jq '{version, main}'
    # expect new version, main: "dist/index.js"
    ```
-5. The `publish:npm` and `publish:verdaccio` scripts are legacy traps — npm ≥ 9 applies `publishConfig.registry` over the `--registry` CLI flag, so `publish:verdaccio` would target npmjs anyway (or fail auth). Do not use them; remove them in a follow-up.
+5. The legacy `publish:npm` and `publish:verdaccio` scripts were exactly this trap — npm ≥ 9 applies `publishConfig.registry` over the `--registry` CLI flag, so `publish:verdaccio` would target npmjs anyway (or fail auth). They have been **removed from `package.json`** (issue #17); do not reintroduce them. The only release lever is a conventional PR title merged to `main` (rule 2).
