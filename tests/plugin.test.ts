@@ -3,6 +3,7 @@ import { MockBridge } from '@ama-work/plugin-contract';
 import type { Hono } from 'hono';
 import * as mod from '../src/index.js';
 import { createPluginRouter } from '../src/plugin.route.js';
+import { helloWorldHtml } from '../src/panels/template.js';
 
 const plugin = mod.plugin;
 const consolePanel = mod.consolePanel;
@@ -77,5 +78,21 @@ describe('Plugin routes', () => {
     expect(res.status).toBe(200);
     const body = await res.text();
     expect(body).toContain('hello world');
+  });
+});
+
+describe('Panel template', () => {
+  const forbidden = /<!doctype|<html|<head|<body|<meta|<title|<style/i;
+
+  test('is an HTML fragment with no document-level tags', () => {
+    expect(forbidden.test(helloWorldHtml)).toBe(false);
+  });
+
+  test('is a single rooted fragment starting with <div', () => {
+    expect(helloWorldHtml.trimStart().startsWith('<div')).toBe(true);
+  });
+
+  test('contains no viewport-height sizing (100vh)', () => {
+    expect(helloWorldHtml).not.toContain('100vh');
   });
 });

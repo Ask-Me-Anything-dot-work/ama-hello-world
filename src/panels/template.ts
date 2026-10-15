@@ -1,16 +1,4 @@
-export const helloWorldHtml = `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>hello world</title>
-  <style>
-    body { font-family: system-ui, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; background: #f5f5f5; }
-    h1 { color: #333; }
-  </style>
-</head>
-<body>
-  <h1>hello world</h1>
-</body>
-</html>
+export const helloWorldHtml = `<div style="font-family: system-ui, sans-serif; color: inherit; padding: 2rem 1.5rem; text-align: center;">
+  <h1 style="margin: 0; font-size: 1.5rem; font-weight: 600; color: inherit;">hello world</h1>
+</div>
 `;

@@ -20,7 +20,7 @@ The repository follows a clean, predictable layout:
 - `src/index.ts`: Entry point, named `plugin` export (OrchestratorPlugin), and panel exports.
 - `src/plugin.route.ts`: Hono router serving plugin assets under `/plugins/@ama-work/ama-hello-world/`.
 - `src/panels/console.ts`: ConsolePanel definition with absolute `templateUrl`.
-- `src/panels/template.ts`: Panel template ("hello world") embedded as a TS string (tsc does not copy `.html` to `dist/`).
+- `src/panels/template.ts`: Panel template ("hello world") embedded as a TS string (tsc does not copy `.html` to `dist/`). Template is an HTML **fragment** — no `<!DOCTYPE>`/`<html>`/`<head>`/`<body>`/`<meta>`/`<title>` tags and no global `<style>` block (the console injects it via `innerHTML`, where `<style>` is global CSS and would restyle the entire shell).
 - `tests/plugin.test.ts`: MockBridge-based tests for the plugin.
 
 ## 4. Standard Workflows
